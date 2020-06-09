@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grocerry</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="json.css">
+    
+    
+    
+    
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        
+        <div class="login-container">
+           <form action="/action_page.php"> 
+    
+    
+            <button type="submit"><a href="new.html">Logout</a></button>
+          </form>
+        </div>
+      </div>
+
+   
+    <div class="container">
+
+
+    
+        <div class="table-responsive">
+            <h1>To-do-list</h1>
+            <br/>
+            <table class="table table-bordered table-stripped" id="employee-table">
+                <tr>
+                     <th>Title</th>
+                    <th>Completed</th>
+                    <th>Check</th>
+                   
+
+
+
+                    
+                    
+
+
+                    
+
+
+
+
+
+
+                </tr>
+
+
+
+
+
+
+            </table>
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+</body>
+</html>
+
+
+
+<script>
+
+   
+$(document).ready(function() {
+    $.ajax({
+        url: 'https://jsonplaceholder.typicode.com/todos',
+        type: 'get',
+        dataType: 'json',
+        error: function(data){
+        },
+        success: function(data){
+
+            
+	
+	$.each(data,function(i,d) {
+
+        
+           if(d.completed==true)
+           {var tr = $('<tr>');
+            tr.append('<td>' + d.title + '</td>');
+            tr.append('<td>' + d.completed + '</td>');
+            tr.append('<td>' + '<input type="checkbox"disabled >' + '</td>');}
+             
+            else
+           { var tr = $('<tr>');
+            tr.append('<td>' + d.title + '</td>');
+            tr.append('<td>' + d.completed + '</td>');
+            tr.append('<td>' + '<input type="checkbox"onclick="contain">' + '</td>');}
+
+
+
+//             function contain()
+            
+
+//             var promise = new Promise(function(resolve, reject) {
+//                 var x =document.querySelectorAll() <input[type="checkbox"]: checked).length;
+ 
+//  if(x==5) {
+//    resolve(5 task completed);
+//  } else {
+//    reject();
+//  }
+// });
+
+// promise.
+//    then(function () {
+//        alert('Success, Now You are in w3schools');
+//    }).
+//    catch(function () {
+//        console.log('There Some error has occured');
+//    });
+            
+
+
+            
+            $('#employee-table').append(tr); 
+
+	   });   
+      
+        }
+    });
+});
+</script>
